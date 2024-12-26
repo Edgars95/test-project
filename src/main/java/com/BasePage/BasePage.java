@@ -1,20 +1,22 @@
-package com.tests;
+package com.BasePage;
 
+import io.opentelemetry.sdk.internal.AttributesMap;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.Duration;
+import java.util.List;
 
-//šis ir jaunais tests!!
 
-public class Test1 {
+public class BasePage {
+
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        // maximize window for browser
+        //driver.manage().window().maximize();
+
         // Open web page
         driver.get("https://boardgamegeek.com");
 
@@ -34,7 +36,13 @@ public class Test1 {
         ToggleMenu.click();
 
 
-        //kāpēc web page refrešojas un kā to apstadināt + kā uztaisīt taimeri katrai darbībai, vai kā to sauc?
+        List<WebElement> divElement = driver.findElements(By.xpath("/html/body/gg-app/div/main/div/gg-sidebar/div/div[3]"));
+//*[@id="mainbody"]/div/gg-sidebar/div/div[3]
+        divElement.get(0).click();
+
+        // WebElement DivElement = driver.findElement(By.className("tw-flex-1"));
+       // DivElement.click();
+
         //closing web browser
         //driver.quit();
 
